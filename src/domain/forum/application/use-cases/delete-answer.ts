@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import { Either, left, right } from '@/core/either'
 import { AnswersRepository } from '../repositories/answers-repository'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
 import { NotAllowedError } from './errors/not-allowed-error'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface DeleteAnswerUseCaseRequest {
   authorId: string
@@ -19,8 +18,8 @@ export class DeleteAnswerUseCase {
   constructor(private answersRepository: AnswersRepository) {}
 
   async execute({
-    authorId,
     answerId,
+    authorId,
   }: DeleteAnswerUseCaseRequest): Promise<DeleteAnswerUseCaseResponse> {
     const answer = await this.answersRepository.findById(answerId)
 
